@@ -279,10 +279,13 @@
   .v3-asks .arw svg{width:15px;height:15px;display:block;}
   /* 默认:胶囊简单居中(行程日历页等只有胶囊的) */
   .v3-dockwrap{margin-top:auto;position:relative;z-index:30;display:flex;align-items:center;justify-content:center;gap:10px;
-    padding:22px 16px calc(26px + env(safe-area-inset-bottom));background:linear-gradient(0deg,var(--paper) 45%,rgba(247,248,250,.7) 78%,transparent);}
+    padding:14px 16px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(0deg,var(--paper) 45%,rgba(247,248,250,.7) 78%,transparent);}
   /* 首页:三栏对齐(左占位 | 胶囊居中 | 行程右) */
   .v3-dockwrap.has-cal{justify-content:space-between;}
   .v3-dockwrap.has-cal::before{content:"";flex:0 0 48px;}
+  /* 行程页:胶囊悬浮在内容之上(不占底部栏,不挤压卡片) */
+  .v3-dockwrap.floating{position:absolute;left:0;right:0;bottom:0;margin-top:0;pointer-events:none;}
+  .v3-dockwrap.floating .v3-dock{pointer-events:auto;}
   .v3-dock{flex:0 1 auto;display:inline-flex;align-items:center;gap:8px;height:48px;border-radius:24px;padding:0 6px 0 16px;
     background:rgba(58,77,224,.9);box-shadow:0 8px 22px -6px rgba(58,77,224,.5),inset 0 0 0 1px rgba(255,255,255,.18);}
   .v3-dock .sp{width:7px;height:7px;border-radius:50%;background:var(--glow);box-shadow:0 0 9px rgba(255,138,92,.9);flex:0 0 auto;}
@@ -1219,7 +1222,7 @@ body{font-family:var(--font);color:var(--ink);}
   transform:scale(var(--mob-scale, 1));transform-origin:top left;}
 .mscreen.on{display:flex;}
 .im-feed,.v3-body,.plan-stage,.d9-cal-body,.oc-body{-webkit-overflow-scrolling:touch;}
-.im-composer,.v3-dockwrap{padding-bottom:calc(14px + env(safe-area-inset-bottom));}
+.im-composer,.v3-dockwrap{padding-bottom:calc(8px + env(safe-area-inset-bottom));}
 .homebar{display:none;}
 [data-goto]{cursor:pointer;} [data-goto]:active{opacity:.62;}
 .bk,.d9-back{cursor:pointer;}
@@ -1726,7 +1729,7 @@ body{font-family:var(--font);color:var(--ink);}
 
       </div>
 
-      <div class="v3-dockwrap">
+      <div class="v3-dockwrap floating">
         <span class="v3-dock"><span class="sp"></span><span class="dt">问 AI 或按住说话</span><span class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a3 3 0 013 3v5a3 3 0 01-6 0V6a3 3 0 013-3z"/><path d="M6 11a6 6 0 0012 0M12 17v3"/></svg></span></span>
       </div>
 
